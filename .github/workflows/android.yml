@@ -1,10 +1,6 @@
 name: Android CI
 
-on:
-  push:
-    branches: [ "dev-kotlin" ]
-  pull_request:
-    branches: [ "dev-kotlin" ]
+on: [push, pull_request]
 
 jobs:
   build:
