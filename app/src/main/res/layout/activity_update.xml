@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/googlesans"
         android:text="@string/updater_title"
         android:textColor="@color/titleText"
         android:textSize="24sp"

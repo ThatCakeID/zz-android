@@ -35,7 +35,6 @@
             android:id="@+id/musicname_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/googlesans"
             android:singleLine="true"
             android:text="@string/music_plcholder_title"
             android:textColor="@color/titleText"
