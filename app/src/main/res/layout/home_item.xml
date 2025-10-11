@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/googlesans"
             android:singleLine="true"
-            android:text="&lt;Title&gt;"
+            android:text="@string/music_plcholder_title"
             android:textColor="@color/titleText"
             android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/uploader_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&lt;Artist&gt;"
+            android:text="@string/music_plcholder_artist"
             android:textSize="12sp" />
 
     </LinearLayout>

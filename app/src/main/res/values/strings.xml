@@ -49,6 +49,8 @@
 
     <string name="user_plcholder_bio"><![CDATA[<user_bio>]]></string>
     <string name="user_plcholder_username"><![CDATA[<Username>]]></string>
+    <string name="music_plcholder_title"><![CDATA[<Title>]]></string>
+    <string name="music_plcholder_artist"><![CDATA[<Artist>]]></string>
 
     <string name="collection_users_update_err_null">An error occurred whilst trying to update users: value is null</string>
     <string name="collection_musics_update_err_null">An error occurred whilst trying to update musics: value is null</string>
@@ -62,4 +64,5 @@
 
     <!-- DON'T TOUCH THIS! -->
     <string name="main_preferences_key">data</string>
+    <string name="music_plcholder_duration">--:--</string>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sheet_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,7 +52,7 @@
                 android:fontFamily="@font/googlesans"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:text="&lt;Title&gt;"
+                android:text="@string/music_plcholder_title"
                 android:textColor="@color/titleText" />
 
             <TextView
@@ -60,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:singleLine="true"
-                android:text="&lt;Artist&gt;"
-                android:textSize="10sp" />
+                android:text="@string/music_plcholder_artist"
+                android:textSize="11sp" />
         </LinearLayout>
 
         <ImageView
@@ -75,7 +76,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_play_arrow"
-            app:tint="@color/imageTint" />
+            app:tint="@color/imageTint"
+            tools:ignore="ContentDescription" />
 
         <ProgressBar
             android:id="@+id/progressBar2"
@@ -110,7 +112,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_up"
-        app:tint="@color/imageTint" />
+        app:tint="@color/imageTint"
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView3"
@@ -134,7 +137,7 @@
         android:fontFamily="@font/googlesans"
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
-        android:text="&lt;Title&gt;"
+        android:text="@string/music_plcholder_title"
         android:textAlignment="center"
         android:textColor="@color/titleText"
         android:textSize="26sp"
@@ -149,7 +152,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:singleLine="true"
-        android:text="&lt;Artist&gt;"
+        android:text="@string/music_plcholder_artist"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="--:--"
+        android:text="@string/music_plcholder_duration"
         app:layout_constraintStart_toStartOf="@id/seekBar"
         app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
@@ -185,7 +188,8 @@
         app:layout_constraintLeft_toLeftOf="@id/seekBar"
         app:layout_constraintTop_toTopOf="@id/imageView4"
         app:srcCompat="@drawable/ic_repeat"
-        app:tint="@color/imageTint" />
+        app:tint="@color/imageTint"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -197,7 +201,8 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView5"
         app:layout_constraintEnd_toStartOf="@id/imageView5"
         app:srcCompat="@drawable/ic_skip_previous"
-        app:tint="@color/imageTint" />
+        app:tint="@color/imageTint"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -210,7 +215,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_play_arrow"
-        app:tint="@color/imageTint" />
+        app:tint="@color/imageTint"
+        tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -233,14 +239,15 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView5"
         app:layout_constraintStart_toEndOf="@id/imageView5"
         app:srcCompat="@drawable/ic_skip_next"
-        app:tint="@color/imageTint" />
+        app:tint="@color/imageTint"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="--:--"
+        android:text="@string/music_plcholder_duration"
         app:layout_constraintEnd_toEndOf="@id/seekBar"
         app:layout_constraintTop_toBottomOf="@id/seekBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
