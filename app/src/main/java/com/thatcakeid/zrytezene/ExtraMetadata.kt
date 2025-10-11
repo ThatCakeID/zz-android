@@ -32,6 +32,8 @@ object ExtraMetadata {
         watermark.text = BUILD_INFO
     }
 
+    // TODO: Migrate to Media3
+    /**
     fun getExoPlayerCacheDir(mContext: Context): File {
         return File(mContext.cacheDir, "audioCache")
     }
@@ -39,4 +41,5 @@ object ExtraMetadata {
     @UnstableApi
     val exoPlayerCacheEvictor: CacheEvictor =
         LeastRecentlyUsedCacheEvictor((50 * 1024 * 1024).toLong()) // 50MB cache size
+    **/
 }
