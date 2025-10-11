@@ -23,6 +23,8 @@ media3Datasource = "1.8.0"
 media3Common = "1.8.0"
 media3CommonKtx = "1.8.0"
 media3Session = "1.8.0"
+firebaseCrashlyticsNdk = "20.0.3"
+crashlytics = "3.0.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,10 +47,12 @@ androidx-media3-datasource = { group = "androidx.media3", name = "media3-datasou
 androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
 androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3CommonKtx" }
 androidx-media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3Session" }
+firebase-crashlytics-ndk = { group = "com.google.firebase", name = "firebase-crashlytics-ndk", version.ref = "firebaseCrashlyticsNdk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gms" }
+crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 

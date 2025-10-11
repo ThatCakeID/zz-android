@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.crashlytics)
 }
 
 android {
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.androidx.media3.common)
     implementation(libs.androidx.media3.common.ktx)
     implementation(libs.androidx.media3.session)
+    implementation(libs.firebase.crashlytics.ndk)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
