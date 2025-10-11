@@ -54,11 +54,8 @@ class HelperClass : Application() {
         }
 
         fun getPrettyPlaysCount(plays: Number?): String {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                CompactDecimalFormat.getInstance(ULocale.getDefault(),
-                        CompactDecimalFormat.CompactStyle.SHORT).format(plays) + " x played"
-            } else
-                NumberFormat.getInstance().format(plays) + " x played" // TODO: Stub
+            return CompactDecimalFormat.getInstance(ULocale.getDefault(),
+                    CompactDecimalFormat.CompactStyle.SHORT).format(plays) + " x played"
         }
     }
 }
