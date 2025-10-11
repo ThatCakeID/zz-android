@@ -17,7 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import com.thatcakeid.zrytezene.HelperClass.Companion.parseDuration
+import com.thatcakeid.zrytezene.ZryteApp.Companion.parseDuration
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter.ClickListener
 import com.thatcakeid.zrytezene.data.MusicEntry

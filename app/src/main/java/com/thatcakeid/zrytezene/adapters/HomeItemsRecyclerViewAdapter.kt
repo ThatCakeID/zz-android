@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.thatcakeid.zrytezene.HelperClass.Companion.getPrettyDateFormat
-import com.thatcakeid.zrytezene.HelperClass.Companion.getPrettyPlaysCount
+import com.thatcakeid.zrytezene.ZryteApp.Companion.getPrettyDateFormat
+import com.thatcakeid.zrytezene.ZryteApp.Companion.getPrettyPlaysCount
 import com.thatcakeid.zrytezene.R
 import com.thatcakeid.zrytezene.data.MusicEntry
 
