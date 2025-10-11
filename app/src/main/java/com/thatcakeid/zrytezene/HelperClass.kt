@@ -14,6 +14,7 @@ import com.thatcakeid.zrytezene.ui.DebugActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.Locale
 import kotlin.system.exitProcess
 
 class HelperClass : Application() {
@@ -30,7 +31,7 @@ class HelperClass : Application() {
                 applicationContext,
                 1111,
                 intent,
-                PendingIntent.FLAG_ONE_SHOT
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
 
             val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -49,15 +50,13 @@ class HelperClass : Application() {
 
         // TODO: Stub
         fun getPrettyDateFormat(timestamp: Timestamp): String {
-            return SimpleDateFormat("dd/MM/yyyy").format(timestamp.toDate())
+            return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                .format(timestamp.toDate())
         }
 
         fun getPrettyPlaysCount(plays: Number?): String {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                CompactDecimalFormat.getInstance(ULocale.getDefault(),
-                        CompactDecimalFormat.CompactStyle.SHORT).format(plays) + " x played"
-            } else
-                NumberFormat.getInstance().format(plays) + " x played" // TODO: Stub
+            return CompactDecimalFormat.getInstance(ULocale.getDefault(),
+                CompactDecimalFormat.CompactStyle.SHORT).format(plays) + " x played"
         }
     }
 }
