@@ -266,6 +266,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
 
+                adapter.updateItems(this, null, userIndexes)
                 @Suppress("NotifyDataSetChanged")
                 adapter.notifyDataSetChanged()
             }
@@ -305,6 +306,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
 
+                adapter.updateItems(this, musics.values.toList(), null)
                 @Suppress("NotifyDataSetChanged")
                 adapter.notifyDataSetChanged()
             }

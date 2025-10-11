@@ -19,16 +19,19 @@ class HomeItemsRecyclerViewAdapter(
     private var items: List<MusicEntry>,
     private var users: Map<String, String>
 ) : RecyclerView.Adapter<HomeItemsRecyclerViewAdapter.ViewHolder>() {
-
-    @Suppress("unused")
     fun updateItems(
         mContext: Context,
-        items: List<MusicEntry>,
-        users: Map<String, String>
+        items: List<MusicEntry>?,
+        users: Map<String, String>?
     ) {
         this.mContext = mContext.applicationContext
-        this.items = items
-        this.users = users
+
+        if (items != null) {
+            this.items = items
+        }
+        if (users != null) {
+            this.users = users
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
