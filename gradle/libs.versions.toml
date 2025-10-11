@@ -13,17 +13,15 @@ firebase-firestore = "26.0.2"
 firebase-storage = "22.0.1"
 appcompat = "1.7.1"
 constraintlayout = "2.2.1"
-viewmodel = "2.9.4"
 material = "1.13.0"
-navigation = "2.9.5"
 preference = "1.2.1"
 glide = "5.0.5"
 android-image-cropper = "3.3.5"
-media3Datasource = "1.8.0"
-media3Common = "1.8.0"
-media3CommonKtx = "1.8.0"
-media3Session = "1.8.0"
-firebaseCrashlyticsNdk = "20.0.3"
+media3-data-source = "1.8.0"
+media3-common = "1.8.0"
+media3-common-ktx = "1.8.0"
+media3-session = "1.8.0"
+firebase-crashlytics-ndk = "20.0.3"
 crashlytics = "3.0.6"
 
 [libraries]
@@ -33,7 +31,6 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preference" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
@@ -43,16 +40,15 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebase-storage" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 android-image-cropper = { group = "com.github.CanHub", name = "Android-Image-Cropper", version.ref = "android-image-cropper" }
-androidx-media3-datasource = { group = "androidx.media3", name = "media3-datasource", version.ref = "media3Datasource" }
-androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
-androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3CommonKtx" }
-androidx-media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3Session" }
-firebase-crashlytics-ndk = { group = "com.google.firebase", name = "firebase-crashlytics-ndk", version.ref = "firebaseCrashlyticsNdk" }
+androidx-media3-datasource = { group = "androidx.media3", name = "media3-datasource", version.ref = "media3-data-source" }
+androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3-common" }
+androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3-common-ktx" }
+androidx-media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3-session" }
+firebase-crashlytics-ndk = { group = "com.google.firebase", name = "firebase-crashlytics-ndk", version.ref = "firebase-crashlytics-ndk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "gms" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 
