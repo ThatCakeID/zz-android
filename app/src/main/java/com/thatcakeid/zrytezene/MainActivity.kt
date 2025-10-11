@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                                     .addOnFailureListener { e ->
                                         Toast.makeText(
                                             this@MainActivity,
-                                            "An error occured: " + e.message,
+                                            getString(R.string.error_unknown, e.message),
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                                 auth.signOut()
                                 Toast.makeText(
                                     this@MainActivity,
-                                    "You've been signed out because your current account's email is not verified.",
+                                    getString(R.string.auth_logout_unverified),
                                     Toast.LENGTH_LONG
                                 ).show()
                                 startActivity = LoginActivity::class.java
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 // Show the error to user
                 Toast.makeText(
                     this@MainActivity,
-                    "An error occurred: " + e.message,
+                    getString(R.string.error_unknown, e.message),
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -167,14 +167,14 @@ class MainActivity : AppCompatActivity() {
                         }.addOnFailureListener { e ->
                             Toast.makeText(
                                 this@MainActivity,
-                                "An error occured: " + e.message,
+                                getString(R.string.error_unknown, e.message),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                     } else {
                         Snackbar.make(
                             binding.root,
-                            "An error occured: " + task.exception!!.message,
+                            getString(R.string.error_unknown, task.exception!!.message),
                             Snackbar.LENGTH_LONG
                         ).show()
                     }
@@ -187,7 +187,7 @@ class MainActivity : AppCompatActivity() {
                 }.addOnFailureListener { e ->
                     Toast.makeText(
                         this@MainActivity,
-                        "An error occured: " + e.message,
+                        getString(R.string.error_unknown, e.message),
                         Toast.LENGTH_LONG
                     ).show()
                 }

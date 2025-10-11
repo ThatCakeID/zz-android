@@ -23,9 +23,9 @@ class DebugActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         AlertDialog.Builder(this)
-            .setTitle("App crashed")
+            .setTitle(getString(R.string.debug_crash_title))
             .setMessage(intent.getStringExtra("error"))
-            .setPositiveButton("Exit") { _, _ -> finish() }
+            .setPositiveButton(getString(R.string.debug_crash_btn_exit)) { _, _ -> finish() }
             .create().show()
     }
 }

@@ -1,13 +1,13 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/ui_header">
+    <PreferenceCategory app:title="@string/preference_header_ui">
 
         <ListPreference
             app:defaultValue="system"
             app:entries="@array/theme_entries"
             app:entryValues="@array/theme_values"
             app:key="theme"
-            app:title="@string/theme_title"
+            app:title="@string/preference_title_ui_theme"
             app:useSimpleSummaryProvider="true" />
 
         <!--ListPreference
@@ -21,9 +21,9 @@
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="image_preview"
-            app:title="@string/imagep_title"
-            app:summaryOff="@string/imagep_summary_off"
-            app:summaryOn="@string/imagep_summary_on" />
+            app:title="@string/preference_title_ui_imagep"
+            app:summaryOff="@string/preference_summary_off_ui_imagep"
+            app:summaryOn="@string/preference_summary_on_ui_imagep" />
 
     </PreferenceCategory>
 

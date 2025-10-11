@@ -97,7 +97,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/googlesans"
-                    android:text="@string/uploaded_musics"
+                    android:text="@string/profile_uploads"
                     android:textColor="@color/titleText"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@+id/divider2"

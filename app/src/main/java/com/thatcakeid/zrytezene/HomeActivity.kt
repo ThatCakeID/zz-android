@@ -221,7 +221,7 @@ class HomeActivity : AppCompatActivity() {
             if (value == null) {
                 Toast.makeText(
                     this@HomeActivity,
-                    "An error occurred whilst trying to update users: value is null",
+                    getString(R.string.collection_users_update_err_null),
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -276,7 +276,7 @@ class HomeActivity : AppCompatActivity() {
             if (value == null) {
                 Toast.makeText(
                     this@HomeActivity,
-                    "An error occurred whilst trying to update musics: value is null",
+                    getString(R.string.collection_musics_update_err_null),
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -391,9 +391,11 @@ class HomeActivity : AppCompatActivity() {
             }
 
         } else {
-            Toast.makeText(this,
-                    "An error occurred while trying to play a music, playlist is empty",
-                    Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                getString(R.string.music_playlist_empty),
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 

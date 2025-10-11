@@ -44,47 +44,59 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.loginPasswTie.text.toString()
 
             if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())) {
-                Toast.makeText(this@LoginActivity, "Invalid email!", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.auth_error_email_invalid)
+                    , Toast.LENGTH_LONG
+                ).show()
 
                 return@setOnClickListener
             }
 
             if (password.isEmpty()) {
-                Snackbar.make(binding.root, "Password can't be empty!", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.auth_error_pwd_empty),
+                    Snackbar.LENGTH_LONG
+                ).show()
 
                 return@setOnClickListener
             }
 
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 if (auth.currentUser!!.isEmailVerified) {
-                    Toast.makeText(this@LoginActivity, "Logged in", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        getString(R.string.auth_login_success),
+                        Toast.LENGTH_LONG
+                    ).show()
+
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                     finish()
 
                 } else {
                     val alertDialog = AlertDialog.Builder(this@LoginActivity)
 
-                    alertDialog.setTitle("Unverified Email")
-                    alertDialog.setMessage("Your email isn't verified. Do you want to re-send a new verification link to your email?")
-                    alertDialog.setPositiveButton("Yes") { _, _ ->
+                    alertDialog.setTitle(getString(R.string.auth_email_unverified_title))
+                    alertDialog.setMessage(getString(R.string.auth_email_unverified_msg))
+                    alertDialog.setPositiveButton(getString(R.string.dialog_btn_positive)) { _, _ ->
                         auth.currentUser!!.sendEmailVerification().addOnSuccessListener {
                                 Snackbar.make(
                                     binding.root,
-                                    "A verification link has been sent to your email. Please check your inbox or spam box.",
+                                    getString(R.string.auth_verify_link_success),
                                     Snackbar.LENGTH_LONG
                                 ).show()
                             }
                             .addOnFailureListener { e ->
                                 Snackbar.make(
                                     binding.root,
-                                    e.message!!,
+                                    getString(R.string.auth_verify_link_fail, e.message!!),
                                     Snackbar.LENGTH_LONG
                                 ).show()
                             }
                     }
 
-                    alertDialog.setNegativeButton("No") { _, _ -> auth.signOut() }
+                    alertDialog.setNegativeButton(getString(R.string.dialog_btn_negative)) { _, _ -> auth.signOut() }
                     alertDialog.setCancelable(false)
                     alertDialog.create().show()
                 }
@@ -101,15 +113,19 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.loginEmailTie.text.toString().trim()
 
             if (email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())) {
-                Toast.makeText(this@LoginActivity, "Please enter a valid email!", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.auth_error_email_invalid),
+                    Toast.LENGTH_LONG
+                ).show()
+                
                 return@setOnClickListener
             }
 
             auth.sendPasswordResetEmail(email)
             Snackbar.make(
                 binding.root,
-                "A verification link has been sent to your email. Please check your inbox or spam box.",
+                getString(R.string.auth_verify_link_success),
                 Snackbar.LENGTH_LONG
             ).show()
 

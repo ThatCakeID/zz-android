@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="48dp"
-            android:text="@string/welcome"
+            android:text="@string/auth_greeter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/googlesans"
-            android:text="@string/signup"
+            android:text="@string/auth_header_register"
             android:textColor="@color/titleText"
             android:textSize="36sp"
             app:layout_constraintStart_toStartOf="@id/textView"
@@ -57,7 +57,7 @@
                 android:id="@+id/register_email_tie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
+                android:hint="@string/auth_input_email"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
                 android:id="@+id/register_passw_tie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
+                android:hint="@string/auth_input_pwd"
                 android:inputType="textPassword"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,7 @@
                 android:id="@+id/register_passw2_tie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/repassword"
+                android:hint="@string/auth_input_pwd_again"
                 android:inputType="textPassword"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
-            android:text="@string/signup"
+            android:text="@string/auth_header_register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/register_passw2_til"
             app:layout_constraintStart_toStartOf="@id/register_passw2_til" />
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:fontFamily="@font/googlesans"
-            android:text="@string/old_user"
+            android:text="@string/auth_btn_login"
             android:textColor="?attr/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/button_continue" />

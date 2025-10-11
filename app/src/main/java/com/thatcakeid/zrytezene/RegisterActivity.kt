@@ -47,7 +47,8 @@ class RegisterActivity : AppCompatActivity() {
             val passwordRepeat = binding.registerPassw2Tie.text.toString().trim()
 
             if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())) {
-                Snackbar.make(binding.root, "Invalid email!", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root,
+                    getString(R.string.auth_error_email_invalid), Snackbar.LENGTH_LONG).show()
 
                 return@setOnClickListener
             }
@@ -55,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
             if (password.isEmpty()) {
                 Snackbar.make(
                     binding.root,
-                    "Password can't be empty!",
+                    getString(R.string.auth_error_pwd_empty),
                     Snackbar.LENGTH_LONG
                 ).show()
 
@@ -65,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
             if (password != passwordRepeat) {
                 Snackbar.make(
                     binding.root,
-                    "Password does not match",
+                    getString(R.string.auth_error_pwd_mismatch),
                     Snackbar.LENGTH_LONG
                 ).show()
 
@@ -81,14 +82,14 @@ class RegisterActivity : AppCompatActivity() {
                     .sendEmailVerification().addOnSuccessListener {
                         Snackbar.make(
                             binding.root,
-                            "A verification link has been sent to your email. Please check your inbox or spam box.",
+                            getString(R.string.auth_verify_link_success),
                             Snackbar.LENGTH_LONG
                         ).show()
                     }
                     .addOnFailureListener { e ->
                         Snackbar.make(
                             binding.root,
-                            e.message!!,
+                            getString(R.string.auth_verify_link_fail, e.message!!),
                             Snackbar.LENGTH_LONG
                         ).show()
                     }

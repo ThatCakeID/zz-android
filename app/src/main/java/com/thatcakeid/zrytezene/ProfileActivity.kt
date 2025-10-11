@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
             if (value == null) {
                 Toast.makeText(
                     this@ProfileActivity,
-                    "An error occured whilst trying to update user: value is null",
+                    getString(R.string.profile_update_error_null),
                     Toast.LENGTH_LONG
                 ).show()
 
