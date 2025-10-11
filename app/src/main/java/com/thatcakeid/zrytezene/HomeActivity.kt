@@ -17,7 +17,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import com.thatcakeid.zrytezene.HelperClass.Companion.parseDuration
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter.ClickListener
@@ -335,8 +334,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initializeVar() {
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
-
         fpuBinding.textView4.isSelected = true
         fpuBinding.textView7.isSelected = true
 

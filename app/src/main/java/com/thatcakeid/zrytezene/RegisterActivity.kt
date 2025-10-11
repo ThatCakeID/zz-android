@@ -1,6 +1,5 @@
 package com.thatcakeid.zrytezene
 
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import android.os.Bundle
@@ -18,9 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
 
         binding.registerEmailTie.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

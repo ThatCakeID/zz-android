@@ -1,6 +1,5 @@
 package com.thatcakeid.zrytezene
 
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
@@ -16,7 +15,6 @@ class SettingsActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
         setSupportActionBar(binding.toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

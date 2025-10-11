@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import com.thatcakeid.zrytezene.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -21,9 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
 
         binding.loginEmailTie.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -118,7 +115,7 @@ class LoginActivity : AppCompatActivity() {
                     getString(R.string.auth_error_email_invalid),
                     Toast.LENGTH_LONG
                 ).show()
-                
+
                 return@setOnClickListener
             }
 

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import com.thatcakeid.zrytezene.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -18,10 +17,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
-
         setSupportActionBar(binding.toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

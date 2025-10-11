@@ -1,140 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/auth_greeter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/googlesans"
+        android:text="@string/auth_header_login"
+        android:textColor="@color/titleText"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circle"
+        app:srcCompat="@drawable/ic_zrytezene" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_email_til"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/login_passw_til"
+        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="@id/textView3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email_tie"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/auth_greeter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="@string/auth_input_email"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_passw_til"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/forgot_password_text"
+        app:layout_constraintEnd_toEndOf="@id/login_email_til"
+        app:layout_constraintStart_toStartOf="@id/login_email_til"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_passw_tie"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/googlesans"
-            android:text="@string/auth_header_login"
-            android:textColor="@color/titleText"
-            android:textSize="36sp"
-            app:layout_constraintStart_toStartOf="@id/textView"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
+            android:hint="@string/auth_input_pwd"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circle"
-            app:srcCompat="@drawable/ic_zrytezene" />
+    <TextView
+        android:id="@+id/forgot_password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/googlesans"
+        android:text="@string/auth_btn_pwd_lost"
+        app:layout_constraintBottom_toTopOf="@id/button_continue"
+        app:layout_constraintStart_toStartOf="@id/login_passw_til" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_email_til"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            app:errorEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/login_passw_til"
-            app:layout_constraintEnd_toEndOf="@id/imageView"
-            app:layout_constraintStart_toStartOf="@id/textView3">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_continue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="@string/auth_header_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/login_passw_til"
+        app:layout_constraintStart_toStartOf="@id/forgot_password_text" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_email_tie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/auth_input_email"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/register_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/googlesans"
+        android:text="@string/auth_btn_register"
+        android:textColor="?attr/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/button_continue" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_passw_til"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@id/forgot_password_text"
-            app:layout_constraintEnd_toEndOf="@id/login_email_til"
-            app:layout_constraintStart_toStartOf="@id/login_email_til"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_passw_tie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/auth_input_pwd"
-                android:inputType="textPassword"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/forgot_password_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/googlesans"
-            android:text="@string/auth_btn_pwd_lost"
-            app:layout_constraintBottom_toTopOf="@id/button_continue"
-            app:layout_constraintStart_toStartOf="@id/login_passw_til" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_continue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="64dp"
-            android:text="@string/auth_header_login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/login_passw_til"
-            app:layout_constraintStart_toStartOf="@id/forgot_password_text" />
-
-        <TextView
-            android:id="@+id/register_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:fontFamily="@font/googlesans"
-            android:text="@string/auth_btn_register"
-            android:textColor="?attr/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/button_continue" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/watermark_root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="end"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/text_watermark"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:fontFamily="@font/googlesans"
-            android:rotation="45"
-            android:text="unknown"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:translationX="60dp"
-            android:translationY="30dp" />
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

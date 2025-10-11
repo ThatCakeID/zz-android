@@ -1,6 +1,5 @@
 package com.thatcakeid.zrytezene
 
-import com.thatcakeid.zrytezene.ExtraMetadata.setWatermarkColors
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import android.os.Bundle
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
-        setWatermarkColors(binding.textWatermark, binding.watermarkRoot)
 
         // Initialize Firebase
         val versionsDb = FirebaseFirestore.getInstance().collection("versions")
