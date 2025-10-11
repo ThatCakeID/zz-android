@@ -12,6 +12,7 @@ import com.google.firebase.Timestamp
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.util.Locale
 import kotlin.system.exitProcess
 
 class HelperClass : Application() {
@@ -48,7 +49,8 @@ class HelperClass : Application() {
         // TODO: Use proper pretty date format :piola:
         //     10/11/2025; borfei was here :)
         fun getPrettyDateFormat(timestamp: Timestamp): String {
-            return SimpleDateFormat("dd/MM/yyyy").format(timestamp.toDate())
+            return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                .format(timestamp.toDate())
         }
 
         fun getPrettyPlaysCount(plays: Number?): String {
