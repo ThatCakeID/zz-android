@@ -32,7 +32,7 @@ class HelperClass : Application() {
                 PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
 
-            val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val am = getSystemService(ALARM_SERVICE) as AlarmManager
             am[AlarmManager.ELAPSED_REALTIME_WAKEUP, 1000] = pendingIntent
 
             Process.killProcess(Process.myPid())
