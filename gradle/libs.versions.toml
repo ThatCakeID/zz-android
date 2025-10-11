@@ -22,6 +22,10 @@ preference = "1.2.1"
 glide = "5.0.5"
 android-image-cropper = "3.3.5"
 fragmentviewbindingdelegate = "1.0.2"
+media3Datasource = "1.8.0"
+media3Common = "1.8.0"
+media3CommonKtx = "1.8.0"
+media3Session = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +49,10 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 android-image-cropper = { group = "com.github.CanHub", name = "Android-Image-Cropper", version.ref = "android-image-cropper" }
 fragmentviewbindingdelegate = { group = "com.github.Zhuinden", name = "fragmentviewbindingdelegate-kt", version.ref = "fragmentviewbindingdelegate" }
+androidx-media3-datasource = { group = "androidx.media3", name = "media3-datasource", version.ref = "media3Datasource" }
+androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
+androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3CommonKtx" }
+androidx-media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3Session" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

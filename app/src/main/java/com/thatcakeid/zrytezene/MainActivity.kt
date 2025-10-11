@@ -13,10 +13,10 @@ import android.content.Intent
 import android.widget.Toast
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.pm.PackageInfoCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.storage.FirebaseStorage
 import com.canhub.cropper.CropImageView.Guidelines
@@ -67,16 +67,11 @@ class MainActivity : AppCompatActivity() {
                 // NOTE: This implementation will be changed soon
                 val document = queryDocumentSnapshots.documents[0]
                 try {
-                    // Get the app's package information
-                    val packageInfo = packageManager.getPackageInfo(packageName, 0)
-
-                    // Frick Android's deprecation
-                    val appVersionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        packageInfo.longVersionCode
-                    } else {
-                        packageInfo.versionCode.toLong()
-                    }
-
+                    // Get the package information of this application
+                    val appPackageInfo = packageManager.getPackageInfo(packageName, 0)
+                    // Get the app's version code using PackageInfoCompat
+                    //   ryenyuku should be happy now :piola:
+                    val appVersionCode = PackageInfoCompat.getLongVersionCode(appPackageInfo)
                     val startActivity: Class<out Activity?>
 
                     // Get the client's app version and compare it with the one in the server
@@ -124,14 +119,14 @@ class MainActivity : AppCompatActivity() {
                     }
                     startActivity(Intent(applicationContext, startActivity))
                     finish()
-                } catch (ignored: PackageManager.NameNotFoundException) {
+                } catch (_: PackageManager.NameNotFoundException) {
                 } // Ignored, this error shouldn't happen
             } // Set a listener that will listen if there are any errors
             .addOnFailureListener { e ->
                 // Show the error to user
                 Toast.makeText(
                     this@MainActivity,
-                    "An error occured: " + e.message,
+                    "An error occurred: " + e.message,
                     Toast.LENGTH_LONG
                 ).show()
             }

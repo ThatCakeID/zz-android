@@ -4,8 +4,9 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import android.widget.LinearLayout
-import com.google.android.exoplayer2.upstream.cache.CacheEvictor
-import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.datasource.cache.CacheEvictor
+import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
 import java.io.File
 import java.lang.IllegalStateException
 
@@ -35,6 +36,7 @@ object ExtraMetadata {
         return File(mContext.cacheDir, "audioCache")
     }
 
+    @UnstableApi
     val exoPlayerCacheEvictor: CacheEvictor =
         LeastRecentlyUsedCacheEvictor((50 * 1024 * 1024).toLong()) // 50MB cache size
 }

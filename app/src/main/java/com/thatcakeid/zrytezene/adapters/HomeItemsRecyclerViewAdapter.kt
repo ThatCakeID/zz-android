@@ -20,6 +20,7 @@ class HomeItemsRecyclerViewAdapter(
     private var users: Map<String, String>
 ) : RecyclerView.Adapter<HomeItemsRecyclerViewAdapter.ViewHolder>() {
 
+    @Suppress("unused")
     fun updateItems(
         mContext: Context,
         items: List<MusicEntry>,
@@ -65,11 +66,11 @@ class HomeItemsRecyclerViewAdapter(
         var uploaderItem: TextView = itemView.findViewById(R.id.uploader_item)
 
         override fun onClick(v: View) {
-            clickListener?.onItemClick(adapterPosition, v)
+            clickListener?.onItemClick(bindingAdapterPosition, v)
         }
 
         override fun onLongClick(v: View): Boolean {
-            clickListener?.onItemLongClick(adapterPosition, v)
+            clickListener?.onItemLongClick(bindingAdapterPosition, v)
             return false
         }
 

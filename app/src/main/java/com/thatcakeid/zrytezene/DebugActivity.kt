@@ -19,8 +19,9 @@ class DebugActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
-
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
         AlertDialog.Builder(this)
             .setTitle("App crashed")
             .setMessage(intent.getStringExtra("error"))

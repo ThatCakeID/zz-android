@@ -27,7 +27,10 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         val uid = intent.getStringExtra("uid")
 
         val userRef = database.collection("users").document(uid!!)

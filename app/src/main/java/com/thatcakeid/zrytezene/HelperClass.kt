@@ -29,7 +29,7 @@ class HelperClass : Application() {
                 applicationContext,
                 1111,
                 intent,
-                PendingIntent.FLAG_ONE_SHOT
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
 
             val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -46,7 +46,8 @@ class HelperClass : Application() {
                     ":" + DecimalFormat("00").format(duration / 1000 % 60)
         }
 
-        // TODO: Stub
+        // TODO: Use proper pretty date format :piola:
+        //     10/11/2025; borfei was here :)
         fun getPrettyDateFormat(timestamp: Timestamp): String {
             return SimpleDateFormat("dd/MM/yyyy").format(timestamp.toDate())
         }

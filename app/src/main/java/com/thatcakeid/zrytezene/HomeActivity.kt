@@ -13,13 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.audio.AudioAttributes
-import com.google.android.exoplayer2.database.ExoDatabaseProvider
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
-import com.google.android.exoplayer2.upstream.cache.CacheDataSource
-import com.google.android.exoplayer2.upstream.cache.SimpleCache
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.firebase.FirebaseApp
@@ -36,6 +29,7 @@ import com.thatcakeid.zrytezene.databinding.ActivityHomeBinding
 import com.thatcakeid.zrytezene.databinding.SheetFpuBinding
 import java.util.*
 import kotlin.collections.HashMap
+import androidx.core.content.edit
 
 class HomeActivity : AppCompatActivity() {
     private val binding: ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
@@ -66,6 +60,8 @@ class HomeActivity : AppCompatActivity() {
             }
     }
 
+    // TODO: (10/11/2025) Migrate to Media3 API
+    /**
     private val exoPlayer: SimpleExoPlayer by lazy {
         val cache = SimpleCache(
             getExoPlayerCacheDir(applicationContext),
@@ -95,11 +91,14 @@ class HomeActivity : AppCompatActivity() {
             .build()
 
     private val playbackStateListener = PlaybackStateListener()
+    **/
 
     private var handler: Handler = Handler(Looper.getMainLooper())
     private val runnable: Runnable = object : Runnable {
         override fun run() {
             fpuBinding.apply {
+                // Part of Media3 migration; check to-do comment at L62
+                /**
                 if (exoPlayer.isPlaying) {
                     seekBar.progress = exoPlayer.currentPosition.toInt() / 100
 
@@ -114,6 +113,7 @@ class HomeActivity : AppCompatActivity() {
 
                 seekBar.secondaryProgress = progress
                 progressBar3.secondaryProgress = progress
+                **/
             }
 
             handler.postDelayed(this, 100)
@@ -170,7 +170,7 @@ class HomeActivity : AppCompatActivity() {
                     mode = 0
                 }
 
-                preferences!!.edit().putInt("playMode", mode).apply()
+                preferences!!.edit { putInt("playMode", mode) }
                 refreshRepeatState(mode)
             }
         }
@@ -196,24 +196,22 @@ class HomeActivity : AppCompatActivity() {
         fpuBinding.seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 fpuBinding.textView9.text = parseDuration((progress * 100).toLong())
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    fpuBinding.progressBar3.setProgress(progress, true)
-                } else {
-                    fpuBinding.progressBar3.progress = progress
-                }
+                fpuBinding.progressBar3.setProgress(progress, true)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 isDragging = true
-                exoPlayer.pause()
+
+                // Part of Media3 migration; check to-do comment at L62
+                // exoPlayer.pause()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 isDragging = false
 
-                exoPlayer.seekTo((seekBar.progress * 100).toLong())
-                exoPlayer.play()
+                // Part of Media3 migration; check to-do comment at L62
+                // exoPlayer.seekTo((seekBar.progress * 100).toLong())
+                // exoPlayer.play()
             }
         })
 
@@ -271,6 +269,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
 
+                @Suppress("NotifyDataSetChanged")
                 adapter.notifyDataSetChanged()
             }
         }
@@ -309,6 +308,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
 
+                @Suppress("NotifyDataSetChanged")
                 adapter.notifyDataSetChanged()
             }
         }
@@ -348,11 +348,13 @@ class HomeActivity : AppCompatActivity() {
         if (currentPlaylist != null && currentPos > -1) {
             handler.removeCallbacks(runnable)
 
-            exoPlayer.stop()
+            // Part of Media3 migration; check to-do comment at L62
+            // exoPlayer.stop()
             isReady = false
 
-            exoPlayer.setMediaItem(MediaItem.fromUri((currentPlaylist!![currentPos].musicUrl)))
-            exoPlayer.prepare()
+            // Part of Media3 migration; check to-do comment at L62
+            // exoPlayer.setMediaItem(MediaItem.fromUri((currentPlaylist!![currentPos].musicUrl)))
+            // exoPlayer.prepare()
 
             fpuBinding.apply {
                 textView7.text = currentPlaylist!![currentPos].title
@@ -396,7 +398,10 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun togglePlay() = if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
+    private fun togglePlay() {
+        // Part of Media3 migration; check to-do comment at L62
+        // if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
+    }
 
     private fun playNext() {
         when (preferences!!.getInt("playMode", 0)) {
@@ -452,7 +457,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun stop() {
         handler.removeCallbacks(runnable)
-        exoPlayer.stop()
+        // Part of Media3 migration; check to-do comment at L62
+        // exoPlayer.stop()
         isReady = false
         currentPos = -1
         currentPlaylist = null
@@ -462,12 +468,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun resetProgressBar() {
         fpuBinding.apply {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                seekBar.setProgress(0, true)
-            } else {
-                seekBar.progress = 0
-            }
-
+            seekBar.setProgress(0, true)
             seekBar.max = 100
             seekBar.secondaryProgress = 0
             progressBar3.max = 100
@@ -475,6 +476,8 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    // Part of Media3 migration; check to-do comment at L62
+    /**
     private inner class PlaybackStateListener : Player.Listener {
         override fun onPlaybackStateChanged(state: Int) {
             fpuBinding.apply {
@@ -518,6 +521,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+     **/
 
     private fun refreshRepeatState(mode: Int) {
         fpuBinding.imageView9.apply {
