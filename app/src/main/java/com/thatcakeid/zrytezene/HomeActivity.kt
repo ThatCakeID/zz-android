@@ -1,35 +1,37 @@
 package com.thatcakeid.zrytezene
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.*
+import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.thatcakeid.zrytezene.ZryteApp.Companion.parseDuration
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter
 import com.thatcakeid.zrytezene.adapters.HomeItemsRecyclerViewAdapter.ClickListener
 import com.thatcakeid.zrytezene.data.MusicEntry
 import com.thatcakeid.zrytezene.databinding.ActivityHomeBinding
-import com.thatcakeid.zrytezene.databinding.SheetFpuBinding
-import java.util.*
-import kotlin.collections.HashMap
-import androidx.core.content.edit
-import androidx.core.view.WindowCompat
+import java.util.Random
 
 class HomeActivity : AppCompatActivity() {
     private val binding: ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
-    private val fpuBinding: SheetFpuBinding by lazy { SheetFpuBinding.inflate(layoutInflater) }
 
 //    private var musicEntries: ArrayList<HashMap<String, Any>> = ArrayList()
 //    private var musicIndexes: ArrayList<String> = ArrayList()
@@ -50,10 +52,14 @@ class HomeActivity : AppCompatActivity() {
 
     private val bottomSheetBehavior: BottomSheetBehavior<*> by lazy {
         BottomSheetBehavior
-            .from(findViewById(R.id.sheet_root))
+            .from(binding.fpu.root)
             .also {
                 it.state = BottomSheetBehavior.STATE_HIDDEN
             }
+    }
+
+    private val windowInsetsController: WindowInsetsControllerCompat by lazy {
+        WindowCompat.getInsetsController(window, window.decorView)
     }
 
     // TODO: (10/11/2025) Migrate to Media3 API
@@ -92,7 +98,7 @@ class HomeActivity : AppCompatActivity() {
     private var handler: Handler = Handler(Looper.getMainLooper())
     private val runnable: Runnable = object : Runnable {
         override fun run() {
-            fpuBinding.apply {
+            binding.fpu.apply {
                 // Part of Media3 migration; check to-do comment at L62
                 /**
                 if (exoPlayer.isPlaying) {
@@ -132,6 +138,10 @@ class HomeActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
 
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+
+        /**
         binding.userAppbarHome.setOnClickListener {
             startActivity(
                 if (auth.currentUser == null) {
@@ -143,8 +153,9 @@ class HomeActivity : AppCompatActivity() {
                 }
             )
         }
+        **/
 
-        fpuBinding.apply {
+        binding.fpu.apply {
             imageView2.setOnClickListener {
                 bottomSheetBehavior.setState(
                     if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
@@ -190,10 +201,10 @@ class HomeActivity : AppCompatActivity() {
             override fun onItemLongClick(position: Int, v: View) {}
         })
 
-        fpuBinding.seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+        binding.fpu.seekBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                fpuBinding.textView9.text = parseDuration((progress * 100).toLong())
-                fpuBinding.progressBar3.setProgress(progress, true)
+                binding.fpu.textView9.text = parseDuration((progress * 100).toLong())
+                binding.fpu.progressBar3.setProgress(progress, true)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -237,11 +248,13 @@ class HomeActivity : AppCompatActivity() {
 
                         if (dc.document.id == auth.uid) {
                             if (data["img_url"] == "") {
-                                binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
+                                // binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
                             } else {
+                                /**
                                 Glide.with(applicationContext)
                                         .load(data["img_url"] as String?)
                                         .into(binding.userAppbarHome)
+                                **/
                             }
                         }
                     }
@@ -250,7 +263,7 @@ class HomeActivity : AppCompatActivity() {
                         userIndexes.remove(dc.document.id)
 
                         if (dc.document.id == auth.uid) {
-                            binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
+                            // binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
                         }
                     }
                 }
@@ -306,10 +319,19 @@ class HomeActivity : AppCompatActivity() {
                 if (newState == BottomSheetBehavior.STATE_HIDDEN && currentPos != -1) {
                     stop()
                 }
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+                } else {
+                    windowInsetsController.show(WindowInsetsCompat.Type.systemBars())
+                }
+                binding.appBarLayout.visibility =
+                    if (newState == BottomSheetBehavior.STATE_EXPANDED) View.GONE else View.VISIBLE
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                fpuBinding.apply {
+                binding.fpu.apply {
+                    binding.appBarLayout.alpha = 1f - (slideOffset.coerceIn(0f, 1f))
+
                     imageView2.rotation =
                         if (slideOffset >= 0) slideOffset * 180f else 0f
 
@@ -324,9 +346,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initializeVar() {
-        fpuBinding.textView4.isSelected = true
-        fpuBinding.textView7.isSelected = true
-
+        binding.fpu.textView4.isSelected = true
+        binding.fpu.textView7.isSelected = true
         preferences = getSharedPreferences(getString(R.string.main_preferences_key), MODE_PRIVATE)
     }
 
@@ -342,7 +363,7 @@ class HomeActivity : AppCompatActivity() {
             // exoPlayer.setMediaItem(MediaItem.fromUri((currentPlaylist!![currentPos].musicUrl)))
             // exoPlayer.prepare()
 
-            fpuBinding.apply {
+            binding.fpu.apply {
                 textView7.text = currentPlaylist!![currentPos].title
                 textView8.text = if (userIndexes.containsKey(currentPlaylist!![currentPos].authorUserId)) userIndexes[currentPlaylist!![currentPos].authorUserId] else currentPlaylist!![currentPos].authorUserId
                 textView4.text = currentPlaylist!![currentPos].title
@@ -455,7 +476,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun resetProgressBar() {
-        fpuBinding.apply {
+        binding.fpu.apply {
             seekBar.setProgress(0, true)
             seekBar.max = 100
             seekBar.secondaryProgress = 0
@@ -512,7 +533,7 @@ class HomeActivity : AppCompatActivity() {
      **/
 
     private fun refreshRepeatState(mode: Int) {
-        fpuBinding.imageView9.apply {
+        binding.fpu.imageView9.apply {
             alpha = 1.0f
 
             when (mode) {
