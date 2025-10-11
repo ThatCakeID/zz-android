@@ -1,14 +1,8 @@
 package com.thatcakeid.zrytezene
 
-import android.content.Context
 import android.view.View
-import android.widget.TextView
 import android.widget.LinearLayout
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.datasource.cache.CacheEvictor
-import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
-import java.io.File
-import java.lang.IllegalStateException
+import android.widget.TextView
 
 /**
  * This is a simple class that contains
