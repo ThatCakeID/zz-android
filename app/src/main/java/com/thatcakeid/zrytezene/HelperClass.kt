@@ -6,11 +6,9 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.icu.text.CompactDecimalFormat
 import android.icu.util.ULocale
-import android.os.Build
 import android.os.Process
 import com.google.firebase.Timestamp
 import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.system.exitProcess
