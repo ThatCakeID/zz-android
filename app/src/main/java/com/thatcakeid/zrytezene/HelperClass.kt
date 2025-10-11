@@ -3,7 +3,6 @@ package com.thatcakeid.zrytezene
 import android.app.AlarmManager
 import android.app.Application
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.icu.text.CompactDecimalFormat
 import android.icu.util.ULocale
