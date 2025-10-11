@@ -2,6 +2,7 @@ package com.thatcakeid.zrytezene
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.WindowCompat
 import com.thatcakeid.zrytezene.databinding.ActivityUpdateBinding
 
 class UpdateActivity : AppCompatActivity() {
@@ -11,7 +12,7 @@ class UpdateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
     }
 }

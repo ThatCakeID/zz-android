@@ -2,6 +2,7 @@ package com.thatcakeid.zrytezene
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.WindowCompat
 import androidx.preference.PreferenceFragmentCompat
 import com.thatcakeid.zrytezene.databinding.ActivitySettingsBinding
 
@@ -12,7 +13,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)

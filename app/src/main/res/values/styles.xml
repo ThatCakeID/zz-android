@@ -1,29 +1,12 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.Bridge">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/backgroundColor</item>
-
-        <!-- Shared element transition -->
-        <item name="android:windowActivityTransitions">true</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
+    <style name="AppTheme.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar" />
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
 
-    <!-- ShapeableImageView styles -->
+    <!-- ShapeAppearanceOverlay styles -->
     <style name="ShapeAppearanceOverlay.App.Circle" parent="">
         <item name="cornerSize">50%</item>
     </style>
-
     <style name="ShapeAppearanceOverlay.App.RoundedSquare" parent="">
         <item name="cornerSize">7.5%</item>
     </style>

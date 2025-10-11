@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import android.os.Bundle
 import android.text.TextWatcher
 import android.text.Editable
+import androidx.core.view.WindowCompat
 import com.google.android.material.snackbar.Snackbar
 import com.thatcakeid.zrytezene.databinding.ActivityRegisterBinding
 
@@ -17,6 +18,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
 
         binding.registerEmailTie.addTextChangedListener(object : TextWatcher {

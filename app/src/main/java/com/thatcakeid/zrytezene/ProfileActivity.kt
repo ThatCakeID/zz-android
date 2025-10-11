@@ -3,7 +3,7 @@ package com.thatcakeid.zrytezene
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thatcakeid.zrytezene.databinding.ActivityProfileBinding
@@ -17,6 +17,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
@@ -46,15 +47,8 @@ class ProfileActivity : AppCompatActivity() {
             binding.userBio.text = value.getString("description")
 
             if (value.getString("img_url") == "") {
-                binding.userProfilePicture.imageTintList = ContextCompat.getColorStateList(
-                        applicationContext,
-                        R.color.imageTint
-                )
-
                 binding.userProfilePicture.setImageResource(R.drawable.ic_account_circle)
             } else {
-                binding.userProfilePicture.imageTintList = null
-
                 Glide.with(applicationContext)
                         .load(value.getString("img_url"))
                         .into(binding.userProfilePicture)

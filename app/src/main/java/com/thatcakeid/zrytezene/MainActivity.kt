@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.view.WindowCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.storage.FirebaseStorage
 import com.canhub.cropper.CropImageView.Guidelines
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
 
         // Initialize Firebase

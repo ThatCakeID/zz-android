@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/updater_title"
-        android:textColor="@color/titleText"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/update_image"
         app:layout_constraintTop_toBottomOf="@+id/update_image" />

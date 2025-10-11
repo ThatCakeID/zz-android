@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -26,6 +25,7 @@ import com.thatcakeid.zrytezene.databinding.SheetFpuBinding
 import java.util.*
 import kotlin.collections.HashMap
 import androidx.core.content.edit
+import androidx.core.view.WindowCompat
 
 class HomeActivity : AppCompatActivity() {
     private val binding: ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
@@ -124,6 +124,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.enableEdgeToEdge(window)
         setContentView(binding.root)
 
         initializeVar()
@@ -236,14 +237,8 @@ class HomeActivity : AppCompatActivity() {
 
                         if (dc.document.id == auth.uid) {
                             if (data["img_url"] == "") {
-                                binding.userAppbarHome.imageTintList = ContextCompat.getColorStateList(
-                                        applicationContext,
-                                        R.color.imageTint
-                                )
-
                                 binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
                             } else {
-                                binding.userAppbarHome.imageTintList = null
                                 Glide.with(applicationContext)
                                         .load(data["img_url"] as String?)
                                         .into(binding.userAppbarHome)
@@ -255,11 +250,6 @@ class HomeActivity : AppCompatActivity() {
                         userIndexes.remove(dc.document.id)
 
                         if (dc.document.id == auth.uid) {
-                            binding.userAppbarHome.imageTintList = ContextCompat.getColorStateList(
-                                    applicationContext,
-                                    R.color.imageTint
-                            )
-
                             binding.userAppbarHome.setImageResource(R.drawable.ic_account_circle)
                         }
                     }

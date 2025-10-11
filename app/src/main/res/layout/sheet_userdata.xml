@@ -15,8 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/username_til"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circle"
-        app:srcCompat="@drawable/ic_account_circle"
-        app:tint="@color/imageTint" />
+        app:srcCompat="@drawable/ic_account_circle" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_til"

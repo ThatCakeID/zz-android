@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/zz_image"
+        android:id="@+id/zryte_logo"
         android:layout_width="130dp"
         android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,12 +18,12 @@
         app:srcCompat="@drawable/ic_zrytezene" />
 
     <TextView
-        android:id="@+id/zz_text"
+        android:id="@+id/zryte_caption"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="@string/app_name"
-        android:textSize="24sp"
+        android:textAppearance="?attr/textAppearanceLabelSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
