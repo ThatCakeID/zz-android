@@ -1,4 +1,4 @@
-package com.thatcakeid.zrytezene
+package com.thatcakeid.zrytezene.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.text.Editable
 import androidx.core.view.WindowCompat
 import com.google.android.material.snackbar.Snackbar
+import com.thatcakeid.zrytezene.R
 import com.thatcakeid.zrytezene.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {

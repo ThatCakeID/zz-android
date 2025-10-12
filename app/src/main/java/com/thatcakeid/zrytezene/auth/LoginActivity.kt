@@ -1,4 +1,4 @@
-package com.thatcakeid.zrytezene
+package com.thatcakeid.zrytezene.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.thatcakeid.zrytezene.LauncherActivity
+import com.thatcakeid.zrytezene.R
 import com.thatcakeid.zrytezene.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -70,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
 
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    startActivity(Intent(applicationContext, LauncherActivity::class.java))
                     finish()
 
                 } else {

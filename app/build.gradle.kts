@@ -54,7 +54,6 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.glide)
-    implementation(libs.android.image.cropper)
     implementation(libs.androidx.media3.datasource)
     implementation(libs.androidx.media3.common)
     implementation(libs.androidx.media3.common.ktx)

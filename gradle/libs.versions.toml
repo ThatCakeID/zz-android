@@ -16,7 +16,6 @@ constraintlayout = "2.2.1"
 material = "1.13.0"
 preference = "1.2.1"
 glide = "5.0.5"
-android-image-cropper = "3.3.5"
 media3-data-source = "1.8.0"
 media3-common = "1.8.0"
 media3-common-ktx = "1.8.0"
@@ -39,7 +38,6 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebase-firestore" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebase-storage" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-android-image-cropper = { group = "com.github.CanHub", name = "Android-Image-Cropper", version.ref = "android-image-cropper" }
 androidx-media3-datasource = { group = "androidx.media3", name = "media3-datasource", version.ref = "media3-data-source" }
 androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3-common" }
 androidx-media3-common-ktx = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3-common-ktx" }
